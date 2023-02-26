@@ -7,10 +7,16 @@ import dotenv from 'dotenv';
 // load ENV
 dotenv.config({ path: './.env' });
 
-const masto = await login({
-    url: process.env.URL,
-    accessToken: process.env.TOKEN
-});
+const mastologin = async function() {
+    try {
+        const masto = await login({
+            url: process.env.URL,
+            accessToken: process.env.TOKEN
+        });
+        return masto;
+    } catch(err) {
+        alert(err)
+    }
+};
 
-export default masto;
-
+export default mastologin;
